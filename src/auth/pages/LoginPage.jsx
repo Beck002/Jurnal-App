@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
-import { Google } from '@mui/icons-material';
+import  Google  from "@mui/icons-material/Google";
 import { AuthLayout } from '../layout/AuthLayout';
 
 import { useForm } from '../../hooks';
@@ -40,12 +40,17 @@ export const LoginPage = () => {
   }
 
   const onGoogleSignIn = ()=>{
-    dispatch( startGoogleSingIn())
+    console.log('Google Sing In');
+    dispatch( startGoogleSingIn() );
   }
 
   return (
     <AuthLayout title="Login">
-      <form onSubmit={ onSubmit } className='animate__animated animate__fadeIn animate__faster' > 
+      <form 
+        onSubmit={ onSubmit } 
+        className='animate__animated animate__fadeIn animate__faster' 
+        aria-label="submit-form"
+      > 
           <Grid container>
             <Grid item xs={ 12 } sx={{ mt: 2 }}>
               <TextField 
@@ -67,6 +72,9 @@ export const LoginPage = () => {
                 type="password" 
                 placeholder='Contraseña' 
                 fullWidth
+                inputProps={{
+                  'data-testid': 'password'
+                }}
                 name="password" 
                 value={ password }
                 onChange={ onInputChange }
@@ -103,6 +111,7 @@ export const LoginPage = () => {
                   disabled={ isAuthenticating }
                   variant='contained' 
                   fullWidth 
+                  aria-label="google-btn"
                   onClick={ onGoogleSignIn }
                 >
                   <Google />
