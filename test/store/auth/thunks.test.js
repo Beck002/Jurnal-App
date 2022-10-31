@@ -43,7 +43,7 @@ describe('testing auth thunks', ()=>{
 
     test('startCreatingUserWithEmailPassword: debe llamar al checking credentials y login', async () => { 
 
-        const loginData = { ok: true, password: '123456', ...demoUser}; 
+        const loginData = { ok: true, password: '123456', ...demoUser }; 
         await registerUserWithEmailPassword.mockResolvedValue( loginData );
         // thunk
         await startCreatingUserWithEmailPassword( loginData )(dispatch);
@@ -71,7 +71,6 @@ describe('testing auth thunks', ()=>{
         expect( logoutFirebase ).toHaveBeenCalled;        
         expect( dispatch ).toHaveBeenCalledWith( clearNotesLogout() );
         expect( dispatch ).toHaveBeenCalledWith( logout() );
-
 
     })
 

@@ -35,15 +35,11 @@ export const startNewNote = () => {
 }
 
 export const startLoadingNotes = () => {
-
     return async ( dispatch, getState ) => {
 
         const { uid } = getState().auth; 
-
         const notes =  await loadNotes( uid );
-
         dispatch( setNotes( notes ));
-
 
     }   
 }
